@@ -10,9 +10,18 @@ package SingletonPattern;
 
 public class Singleton {
     //Eager
-    private static final Singleton INSTANCE = new Singleton();
+    private static Singleton INSTANCE = null;//new Singleton();
     private Singleton(){
 
+    }
+    static {//static
+        try {
+            if (INSTANCE== null){
+                INSTANCE = new Singleton();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     public static Singleton getInstance(){
         return INSTANCE;
